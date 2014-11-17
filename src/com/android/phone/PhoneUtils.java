@@ -25,8 +25,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.net.Uri;
@@ -2428,17 +2426,5 @@ public class PhoneUtils {
     public static boolean isLandscape(Context context) {
         return context.getResources().getConfiguration().orientation
                 == Configuration.ORIENTATION_LANDSCAPE;
-    }
-
-    public static boolean isPackageInstalled(Context context, String pkg) {
-        if (pkg == null) {
-            return false;
-        }
-        try {
-            PackageInfo pi = context.getPackageManager().getPackageInfo(pkg, 0);
-            return pi.applicationInfo.enabled;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
     }
 }
