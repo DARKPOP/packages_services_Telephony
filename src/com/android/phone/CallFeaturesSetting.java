@@ -33,11 +33,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.UserHandle;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.ContactsContract.CommonDataKinds;
 import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
@@ -199,16 +199,16 @@ public class CallFeaturesSetting extends PreferenceActivity
     private EditPhoneNumberPreference mSubMenuVoicemailSettings;
 
     /** Whether dialpad plays DTMF tone or not. */
-    private CheckBoxPreference mButtonAutoRetry;
-    private CheckBoxPreference mButtonHAC;
+    private SwitchPreference mButtonAutoRetry;
+    private SwitchPreference mButtonHAC;
     private ListPreference mButtonDTMF;
     private TtyModeListPreference mButtonTTY;
     private VoicemailProviderListPreference mVoicemailProviders;
     private PreferenceScreen mVoicemailSettingsScreen;
     private PreferenceScreen mVoicemailSettings;
     private VoicemailRingtonePreference mVoicemailNotificationRingtone;
-    private CheckBoxPreference mVoicemailNotificationVibrate;
-    private CheckBoxPreference mEnableVideoCalling;
+    private SwitchPreference mVoicemailNotificationVibrate;
+    private SwitchPreference mEnableVideoCalling;
     private boolean isSpeedDialListStarted = false;
     private PreferenceScreen mButtonBlacklist;
 
@@ -1198,8 +1198,8 @@ public class CallFeaturesSetting extends PreferenceActivity
         mSubMenuVoicemailSettings.setDialogTitle(R.string.voicemail_settings_number_label);
 
         mButtonDTMF = (ListPreference) findPreference(BUTTON_DTMF_KEY);
-        mButtonAutoRetry = (CheckBoxPreference) findPreference(BUTTON_RETRY_KEY);
-        mButtonHAC = (CheckBoxPreference) findPreference(BUTTON_HAC_KEY);
+        mButtonAutoRetry = (SwitchPreference) findPreference(BUTTON_RETRY_KEY);
+        mButtonHAC = (SwitchPreference) findPreference(BUTTON_HAC_KEY);
         mButtonTTY = (TtyModeListPreference) findPreference(
                 getResources().getString(R.string.tty_mode_key));
 
@@ -1217,13 +1217,13 @@ public class CallFeaturesSetting extends PreferenceActivity
                 getResources().getString(R.string.voicemail_notification_ringtone_key));
         mVoicemailNotificationRingtone.init(mPhone);
 
-        mVoicemailNotificationVibrate = (CheckBoxPreference) findPreference(
+        mVoicemailNotificationVibrate = (SwitchPreference) findPreference(
                 getResources().getString(R.string.voicemail_notification_vibrate_key));
         mVoicemailNotificationVibrate.setOnPreferenceChangeListener(this);
 
         updateVMPreferenceWidgets(mVoicemailProviders.getValue());
 
-        mEnableVideoCalling = (CheckBoxPreference) findPreference(ENABLE_VIDEO_CALLING_KEY);
+        mEnableVideoCalling = (SwitchPreference) findPreference(ENABLE_VIDEO_CALLING_KEY);
 
         if (getResources().getBoolean(R.bool.dtmf_type_enabled)) {
             mButtonDTMF.setOnPreferenceChangeListener(this);
