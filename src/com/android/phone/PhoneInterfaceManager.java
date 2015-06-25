@@ -2319,7 +2319,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return mPhone.isImsRegistered();
     }
 
+    /*
+     * {@hide}
+     * Returns the IMS Registration Status
+     */
+    public boolean isWifiCallingEnabled() {
+        return mPhone.isWifiCallingEnabled();
+    }
+
+    /*
+     * {@hide}
+     * Returns the IMS Registration Status
+     */
+    public boolean isVolteEnabled() {
+        return mPhone.isVolteEnabled();
+    }
+
     public int getLteOnGsmMode() {
         return mPhone.getLteOnGsmMode();
+
     }
 }
